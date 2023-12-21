@@ -1,166 +1,113 @@
-import React, { useState } from 'react';
-import './index.css'
+import React, { useState } from "react";
+import "./index.css";
 
 const Calculator = () => {
-  const [displayValue, setDisplayValue] = useState('0');
+  const [displayValue, setDisplayValue] = useState(" ");
 
   const handleButtonClick = (value) => {
-    setDisplayValue((prevValue) => prevValue === ' ' ? value : prevValue + value);
+    setDisplayValue((prevValue) =>
+      prevValue === " " ? value : prevValue + value
+    );
   };
 
   const handleClearButtonClick = () => {
-    setDisplayValue(' ');
+    setDisplayValue(" ");
   };
 
   const handleEvaluate = () => {
     try {
       setDisplayValue(eval(displayValue).toString());
     } catch (error) {
-      setDisplayValue('Error');
+      setDisplayValue("∞");
     }
   };
 
   return (
-    <div className="calculator">
-      <form name="calculator">
-        <input
-          type="text"
-          name="display"
-          disabled
-          placeholder="0"
-          className="header"
-          value={displayValue}
-        />
-        <div className="header-item">
-          <div className="list">
-            <input
-              name="seven"
-              type="button"
-              value="7"
-              className="link yetti"
-              onClick={() => handleButtonClick('7')}
-            />
-            <input
-              name="eight"
-              type="button"
-              value="8"
-              className="link sakkiz"
-              onClick={() => handleButtonClick('8')}
-            />
-            <input
-              name="nine"
-              type="button"
-              value="9"
-              className="link toqqiz"
-              onClick={() => handleButtonClick('9')}
-            />
-            <input
-              name="times"
-              type="button"
-              value="/"
-              className="operator link bolish"
-              onClick={() => handleButtonClick('/')}
-            />
-          </div>
-          <div className="list">
-            <input
-              name="four"
-              type="button"
-              value="4"
-              className="link tor"
-              onClick={() => handleButtonClick('4')}
-            />
-            <input
-              name="five"
-              type="button"
-              value="5"
-              className="link besh"
-              onClick={() => handleButtonClick('5')}
-            />
-            <input
-              name="six"
-              type="button"
-              value="6"
-              className="link olti"
-              onClick={() => handleButtonClick('6')}
-            />
-            <input
-              name="times"
-              type="button"
-              value="*"
-              className="operator link kopay"
-              onClick={() => handleButtonClick('*')}
-            />
-          </div>
-          <div className="list">
-            <input
-              name="one"
-              type="button"
-              value="1"
-              className="link bir"
-              onClick={() => handleButtonClick('1')}
-            />
-            <input
-              name="two"
-              type="button"
-              value="2"
-              className="link ikki"
-              onClick={() => handleButtonClick('2')}
-            />
-            <input
-              name="three"
-              type="button"
-              value="3"
-              className="link uch"
-              onClick={() => handleButtonClick('3')}
-            />
-            <input
-              name="times"
-              type="button"
-              value="-"
-              className="operator link minus"
-              onClick={() => handleButtonClick('-')}
-            />
-          </div>
-          <div className="list">
-            <input
-              name="."
-              type="button"
-              value="."
-              className="link tochka"
-              onClick={() => handleButtonClick('.')}
-            />
-            <input
-              name="zero"
-              type="button"
-              value="0"
-              className="link nol"
-              onClick={() => handleButtonClick('0')}
-            />
-            <input
-              name="times"
-              type="button"
-              value="+"
-              className="link plus"
-              onClick={() => handleButtonClick('+')}
-            />
-            <input
-              name="times"
-              type="button"
-              value="c"
-              className="item red link"
-              onClick={handleClearButtonClick}
-            />
-          </div>
+    <div className="big">
+      <div className="buttons">
+        <button className="btn btn-light">
+          <i className="fa-regular fa-eye"></i> Runtime
+        </button>
+        <button className="btn btn-light">
+          <i className="fa-solid fa-code"></i> Constructor
+        </button>
+      </div>
+      <br />
+
+      <input
+        type="text"
+        name="display"
+        disabled
+        placeholder="0"
+        className="fon"
+        value={displayValue}
+      />
+      <br />
+      <div className="sonlar">
+        <div className="first d-flex justify-content-between">
+          <button className="btn" onClick={() => handleButtonClick("/")}>
+            /
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("*")}>
+            x
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("-")}>
+            -
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("+")}>
+            +
+          </button>
         </div>
-        <input
-          name="assignment"
-          type="button"
-          value="="
-          className="javob"
-          onClick={handleEvaluate}
-        />
-      </form>
+        <div className="second d-flex justify-content-between gap-1">
+          <button className="btn" onClick={() => handleButtonClick("7")}>
+            7
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("8")}>
+            8
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("9")}>
+            9
+          </button>
+        </div>
+        <div className="third d-flex justify-content-between gap-1">
+          <button className="btn" onClick={() => handleButtonClick("4")}>
+            4
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("5")}>
+            5
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("6")}>
+            6
+          </button>
+        </div>
+        <div className="four d-flex justify-content-between gap-1">
+          <button className="btn" onClick={() => handleButtonClick("1")}>
+            1
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("2")}>
+            2
+          </button>
+          <button className="btn" onClick={() => handleButtonClick("3")}>
+            3
+          </button>
+        </div>
+        <div className="five d-flex justify-content-between gap-2 w-100">
+          <button className="btn" onClick={handleClearButtonClick}>
+            AC
+          </button>
+          <button className="btn" onClick={() => handleButtonClick(".")}>
+            ,
+          </button>
+          <button className="btn w-75" onClick={() => handleButtonClick("0")}>
+            0
+          </button>
+        </div>
+        <div className="six">
+          <button className="ravno btn" onClick={handleEvaluate}>
+            =
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
